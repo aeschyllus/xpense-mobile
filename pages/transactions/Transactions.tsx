@@ -3,8 +3,12 @@ import _ from "lodash";
 import { useMemo } from "react";
 import { Text, View } from "react-native";
 import { getTransactions } from "./Transactions.queries";
+import { TransactionActionButton } from "./components/TransactionActionButton";
 import { TransactionList } from "./components/TransactionList";
 import { TransactionListItem } from "./components/TransactionListItem";
+
+// TODO: Add Styles for transactions screen
+// TODO: Clickable transaction item to view details
 
 export const TransactionsScreen = () => {
   const { rows } = useQuery(getTransactions);
@@ -16,7 +20,7 @@ export const TransactionsScreen = () => {
   }, [rows]);
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <View style={{ borderBottomWidth: 0.5, padding: 10 }}>
         <Text>Transactions</Text>
       </View>
@@ -33,6 +37,8 @@ export const TransactionsScreen = () => {
           </TransactionList>
         ))}
       </View>
+
+      <TransactionActionButton />
     </View>
   );
 };
