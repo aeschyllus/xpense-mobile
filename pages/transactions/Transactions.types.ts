@@ -8,6 +8,7 @@ export interface TransactionListItemProps {
     amount: number;
     accountName: string | null;
     categoryName: string | null;
+    type: "INCOME" | "EXPENSE" | "TRANSFER" | null;
     localTransactionDate: string;
   };
 }

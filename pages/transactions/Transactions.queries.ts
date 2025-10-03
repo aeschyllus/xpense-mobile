@@ -17,6 +17,7 @@ export const getTransactions = () =>
       amount: transactions.amount,
       accountName: accounts.name,
       categoryName: categories.name,
+      type: transactions.type,
       localTransactionDate: localTransactionDateExpr,
     })
     .from(transactions)
