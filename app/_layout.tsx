@@ -1,15 +1,25 @@
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
 import { Stack } from "expo-router";
 import { Suspense, useEffect } from "react";
 import { ActivityIndicator, Text, View } from "react-native";
-import { generateDummyData, truncateDummyData } from "@/db/utils";
+import { generateDummyData } from "@/db/utils";
 import { DATABASE_NAME } from "@/constants/db";
 import { SQLiteProvider } from "expo-sqlite";
 import { db } from "@/db/client";
 import { useMigrations } from "drizzle-orm/expo-sqlite/migrator";
 import migrations from "../drizzle/migrations";
 
+SplashScreen.preventAutoHideAsync();
+
 export default function RootLayout() {
-  const { error } = useMigrations(db, migrations);
+  const [loaded, fontError] = useFonts({
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    "SpaceMono-Italic": require("../assets/fonts/SpaceMono-Italic.ttf"),
+    "SpaceMono-Bold": require("../assets/fonts/SpaceMono-Bold.ttf"),
+    "SpaceMono-BoldItalic": require("../assets/fonts/SpaceMono-BoldItalic.ttf"),
+  });
+  const { error: migrationError } = useMigrations(db, migrations);
 
   // NOTE: For testing purposes only. Comment out before pushing
   useEffect(() => {
@@ -17,7 +27,17 @@ export default function RootLayout() {
     // truncateDummyData(db);
   }, []);
 
-  if (error) {
+  useEffect(() => {
+    if (loaded || fontError) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, fontError]);
+
+  if (!loaded && !fontError) {
+    return null;
+  }
+
+  if (migrationError) {
     return (
       <View
         style={{
@@ -26,7 +46,7 @@ export default function RootLayout() {
           justifyContent: "center",
         }}
       >
-        <Text>Migration error: {error.message}</Text>
+        <Text>Migration error: {migrationError.message}</Text>
       </View>
     );
   }
