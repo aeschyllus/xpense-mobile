@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { TransactionListProps } from "../Transactions.types";
 import {
   getDayOfMonth,
@@ -6,6 +6,7 @@ import {
   getMonthNameShort,
 } from "@/utils/date";
 import { COLORS } from "@/constants/colors";
+import { Typography } from "@/components/_common/Typography";
 
 export const TransactionList: React.FC<
   React.PropsWithChildren<TransactionListProps>
@@ -25,11 +26,13 @@ export const TransactionList: React.FC<
         <View
           style={{ backgroundColor: COLORS.BLUE, padding: 4, borderRadius: 8 }}
         >
-          <Text style={{ color: COLORS.WHITE }}>{getDayOfWeekShort(date)}</Text>
+          <Typography style={{ color: COLORS.WHITE }}>
+            {getDayOfWeekShort(date)}
+          </Typography>
         </View>
-        <Text style={{ fontWeight: "bold" }}>
+        <Typography style={{ fontWeight: "bold" }}>
           {getDayOfMonth(date)} {getMonthNameShort(date)}
-        </Text>
+        </Typography>
       </View>
       {children}
     </View>

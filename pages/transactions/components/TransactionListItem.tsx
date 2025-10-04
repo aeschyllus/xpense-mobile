@@ -1,7 +1,8 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { TransactionListItemProps } from "../Transactions.types";
 import { formatPrice } from "@/utils/currency";
 import { getTransactionTypeColor } from "@/utils/transactions";
+import { Typography } from "@/components/_common/Typography";
 
 export const TransactionListItem: React.FC<TransactionListItemProps> = ({
   transaction,
@@ -15,12 +16,14 @@ export const TransactionListItem: React.FC<TransactionListItemProps> = ({
       }}
     >
       <View style={{ flexDirection: "row" }}>
-        <Text style={{ width: 70 }}>{transaction.categoryName}</Text>
-        <Text>{transaction.accountName}</Text>
+        <Typography style={{ width: 70 }}>
+          {transaction.categoryName}
+        </Typography>
+        <Typography>{transaction.accountName}</Typography>
       </View>
-      <Text style={{ color: getTransactionTypeColor(transaction.type) }}>
+      <Typography style={{ color: getTransactionTypeColor(transaction.type) }}>
         {formatPrice(transaction.amount)}
-      </Text>
+      </Typography>
     </View>
   );
 };

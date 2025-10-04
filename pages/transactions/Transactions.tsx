@@ -1,11 +1,12 @@
 import { useQuery } from "@/hooks/useQuery";
 import _ from "lodash";
 import { useMemo } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { getTransactions } from "./Transactions.queries";
 import { TransactionActionButton } from "./components/TransactionActionButton";
 import { TransactionList } from "./components/TransactionList";
 import { TransactionListItem } from "./components/TransactionListItem";
+import { Typography } from "@/components/_common/Typography";
 
 // TODO: Clickable transaction item to view details
 
@@ -21,7 +22,7 @@ export const TransactionsScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <View style={{ borderBottomWidth: 0.8, padding: 10 }}>
-        <Text>Transactions</Text>
+        <Typography>Transactions</Typography>
       </View>
 
       <View style={{ padding: 12 }}>

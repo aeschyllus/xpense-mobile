@@ -2,13 +2,14 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { Stack } from "expo-router";
 import { Suspense, useEffect } from "react";
-import { ActivityIndicator, Text, View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import { generateDummyData } from "@/db/utils";
 import { DATABASE_NAME } from "@/constants/db";
 import { SQLiteProvider } from "expo-sqlite";
 import { db } from "@/db/client";
 import { useMigrations } from "drizzle-orm/expo-sqlite/migrator";
 import migrations from "../drizzle/migrations";
+import { Typography } from "@/components/_common/Typography";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -46,7 +47,7 @@ export default function RootLayout() {
           justifyContent: "center",
         }}
       >
-        <Text>Migration error: {migrationError.message}</Text>
+        <Typography>Migration error: {migrationError.message}</Typography>
       </View>
     );
   }
