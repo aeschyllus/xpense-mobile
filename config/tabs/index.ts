@@ -1,2 +1,2 @@
 export * from "./tabs";
-export * from "./tabs.interface";
+export * from "./tabs.types";

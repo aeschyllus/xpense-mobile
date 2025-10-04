@@ -1,8 +1,8 @@
-import { TabScreen } from "./tabs.interface";
+import { TabScreen } from "./tabs.types";
 
 export const TAB_SCREENS: TabScreen[] = [
   {
-    name: "index",
+    name: "transactions/index",
     title: "Trans.",
     iconName: "book",
   },
