@@ -8,8 +8,6 @@ import { TransactionList } from "./_components/TransactionList";
 import { TransactionListItem } from "./_components/TransactionListItem";
 import { Typography } from "@/components/_common/Typography";
 
-// TODO: Clickable transaction item to view details
-
 export const TransactionsScreen = () => {
   const { rows } = useQuery(getTransactions);
   const groupedRows = useMemo(() => {
