@@ -4,6 +4,7 @@ import { useMemo } from "react";
 
 export const Typography: React.FC<React.PropsWithChildren<TypographyProps>> = ({
   fontStyle = "regular",
+  style,
   children,
 }) => {
   const fontFamily = useMemo(() => {
@@ -21,5 +22,5 @@ export const Typography: React.FC<React.PropsWithChildren<TypographyProps>> = ({
     }
   }, [fontStyle]);
 
-  return <Text style={{ fontFamily }}>{children}</Text>;
+  return <Text style={[{ fontFamily }, style]}>{children}</Text>;
 };
