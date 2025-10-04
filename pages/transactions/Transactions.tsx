@@ -3,9 +3,9 @@ import _ from "lodash";
 import { useMemo } from "react";
 import { View } from "react-native";
 import { getTransactions } from "./Transactions.queries";
-import { TransactionActionButton } from "./components/TransactionActionButton";
-import { TransactionList } from "./components/TransactionList";
-import { TransactionListItem } from "./components/TransactionListItem";
+import { TransactionActionButton } from "./_components/TransactionActionButton";
+import { TransactionList } from "./_components/TransactionList";
+import { TransactionListItem } from "./_components/TransactionListItem";
 import { Typography } from "@/components/_common/Typography";
 
 // TODO: Clickable transaction item to view details
