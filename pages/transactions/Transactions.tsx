@@ -7,6 +7,7 @@ import { TransactionActionButton } from "./_components/TransactionActionButton";
 import { TransactionList } from "./_components/TransactionList";
 import { TransactionListItem } from "./_components/TransactionListItem";
 import { Typography } from "@/components/_common/Typography";
+import { Container } from "@/components/_common/Container";
 
 export const TransactionsScreen = () => {
   const { rows } = useQuery(getTransactions);
@@ -19,11 +20,11 @@ export const TransactionsScreen = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ borderBottomWidth: 0.8, padding: 10 }}>
+      <Container style={{ borderBottomWidth: 0.8 }}>
         <Typography>Transactions</Typography>
-      </View>
+      </Container>
 
-      <View style={{ padding: 12 }}>
+      <Container>
         {_.map(groupedRows, (row) => (
           <TransactionList key={row.date} date={row.date}>
             {_.map(row.transactions, (transaction) => (
@@ -34,7 +35,7 @@ export const TransactionsScreen = () => {
             ))}
           </TransactionList>
         ))}
-      </View>
+      </Container>
 
       <TransactionActionButton />
     </View>
