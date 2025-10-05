@@ -2,12 +2,12 @@ import { useQuery } from "@/hooks/useQuery";
 import _ from "lodash";
 import { useMemo } from "react";
 import { View } from "react-native";
-import { getTransactions } from "./Transactions.queries";
 import { TransactionActionButton } from "./_components/TransactionActionButton";
 import { TransactionList } from "./_components/TransactionList";
 import { TransactionListItem } from "./_components/TransactionListItem";
 import { Typography } from "@/components/_common/Typography";
 import { Container } from "@/components/_common/Container";
+import { getTransactions } from "@/utils/queries/transactions";
 
 export const TransactionsScreen = () => {
   const { rows } = useQuery(getTransactions);
