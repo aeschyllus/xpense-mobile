@@ -23,4 +23,22 @@ export const getTransactions = () =>
     .from(transactions)
     .leftJoin(categories, eq(transactions.categoryId, categories.id))
     .leftJoin(accounts, eq(transactions.accountId, accounts.id))
-    .orderBy(desc(transactions.transactionDate), desc(transactions.id));
+    .orderBy(desc(transactions.transactionDate), desc(transactions.id))
+    .execute();
+
+export const getTransaction = (transactionId: number) =>
+  db
+    .select({
+      id: transactions.id,
+      amount: transactions.amount,
+      accountName: accounts.name,
+      categoryName: categories.name,
+      type: transactions.type,
+      transactionDate: transactions.transactionDate,
+      description: transactions.description,
+    })
+    .from(transactions)
+    .leftJoin(categories, eq(transactions.categoryId, categories.id))
+    .leftJoin(accounts, eq(transactions.accountId, accounts.id))
+    .where(eq(transactions.id, transactionId))
+    .execute();

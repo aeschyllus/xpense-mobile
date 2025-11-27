@@ -20,7 +20,7 @@ export const TransactionList: React.FC<
           padding: 6,
           flexDirection: "row",
           alignItems: "center",
-          gap: 6,
+          gap: 12,
         }}
       >
         <View
